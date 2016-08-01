@@ -1,0 +1,5 @@
+export const GET_FANTS_REQUEST = 'GET_FANTS_REQUEST'
+export const GET_FANTS_SUCCESS = 'GET_FANTS_SUCCESS'
+export const GET_FANTS_ERROR = 'GET_FANTS_ERROR'
+
+export const SET_TYPE = 'SET_TYPE'

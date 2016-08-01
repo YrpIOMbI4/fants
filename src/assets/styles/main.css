@@ -1,0 +1,66 @@
+@import "reset";
+
+body {
+	padding: 30px;
+	font-family: helvetica, arial, sans-serif 
+}
+
+.Fants {
+	box-sizing: border-box;
+	padding: 50px 0 0;
+	position: absolute;
+	height: 100%;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	&--red {
+		background: #dc0046;
+		color: #FFF;
+	}
+	&--orange {
+		background: #ff9b1c;
+		color: #FFF;
+	}
+	&--yellow {
+		background: #ffca00;
+		color: #000;
+	}
+	&--green {
+		background: #00a983;
+		color: #FFF;
+	}
+}
+
+.Fant {
+	font-family: 'Merriweather', serif;
+	&__title {
+		font-size: 46px;
+	}
+	&__description {
+		font-size: 20px;
+	}
+}
+
+.TypeSwitch{
+	margin-bottom: 20px;
+	&__item {
+		user-select: none;
+		display: inline-block;
+		padding: 10px 15px;
+		&.active {
+			background: #000;
+			color: #FFF;
+		}
+	}
+}
+
+.Btn {
+	position: absolute;
+	bottom: 100px;
+	display: inline-block;
+	font-size: 20px;
+	border-radius: 30px;
+	padding: 10px 15px;
+	border: 1px solid;
+}

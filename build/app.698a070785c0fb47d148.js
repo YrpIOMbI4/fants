@@ -1,0 +1,2 @@
+webpackJsonp([0,3],[function(n,t,e){try{(function(){"use strict";document.getElementById("root").innerHTML="Hello world!"}).call(this)}finally{}}]);
+//# sourceMappingURL=app.698a070785c0fb47d148.js.map
