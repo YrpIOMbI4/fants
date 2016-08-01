@@ -1,19 +1,19 @@
 @import "reset";
 
 body {
-	padding: 30px;
 	font-family: helvetica, arial, sans-serif 
 }
 
 .Fants {
+	transition: background .3s cubic-bezier(.42,0,.08,1);
 	box-sizing: border-box;
-	padding: 50px 0 0;
 	position: absolute;
 	height: 100%;
 	top: 0;
 	left: 0;
 	width: 100%;
 	text-align: center;
+	overflow: hidden;
 	&--red {
 		background: #dc0046;
 		color: #FFF;
@@ -32,10 +32,23 @@ body {
 	}
 }
 
+.FantContainer {
+	position: relative;
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+    padding: 200px 0 150px 0;
+    height: 100px;
+}
+
 .Fant {
+	position: absolute;
+	width: 100%;
 	font-family: 'Merriweather', serif;
+	line-height: 1.9em;
 	&__title {
 		font-size: 46px;
+		margin-bottom: 30px;
 	}
 	&__description {
 		font-size: 20px;
@@ -43,24 +56,61 @@ body {
 }
 
 .TypeSwitch{
-	margin-bottom: 20px;
+	background: #000;
 	&__item {
+		border-bottom: 2px solid transparent;
+		color: #ccc;
+		cursor: pointer;
 		user-select: none;
 		display: inline-block;
 		padding: 10px 15px;
-		&.active {
-			background: #000;
+		transition: all .2s cubic-bezier(.42,0,.08,1);
+		&:hover {
 			color: #FFF;
+			transition: all .1s cubic-bezier(.42,0,.08,1);
+		}
+		&.active {
+			border-bottom-color: #fff;
+			transition: all .2s cubic-bezier(.42,0,.08,1);
 		}
 	}
 }
 
 .Btn {
-	position: absolute;
-	bottom: 100px;
+	cursor: pointer;
 	display: inline-block;
 	font-size: 20px;
 	border-radius: 30px;
 	padding: 10px 15px;
 	border: 1px solid;
+}
+
+.FantSwitch {
+	text-align: center;
+}
+
+.example-enter {
+	opacity: 0.01;
+	visibility: hidden;
+	left: -100%;
+}
+
+.example-enter.example-enter-active {
+	opacity: 1;
+	visibility: visible;
+	transition: all .5s cubic-bezier(.42,0,.08,1);
+	left: 0;
+}
+
+.example-leave {
+	opacity: 1;
+	visibility: visible;
+	left: 0;
+}
+
+.example-leave.example-leave-active {
+	opacity: 0.01;
+	visibility: hidden;
+	left: 100%;
+	transition: all .3s cubic-bezier(.42,0,.08,1);
 }

@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as FantsActions from '../actions/FantsActions'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 import Fant from '../components/Fant'
 
@@ -60,6 +62,8 @@ class App extends Component {
 		const filteredFants = this.filterFants(fants.fantsList, fants.currentType)
 		let fant = {}
 
+		let fantItem = <Fant key={this.state.currentFant.id} fant={this.state.currentFant}/>
+
 		console.log(this.state.currentFant)
 
 		return (
@@ -76,10 +80,16 @@ class App extends Component {
 						</span>
 					)}
 				</div>
+				<div className="FantContainer">
+					<ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+						{fantItem}
+					</ReactCSSTransitionGroup>
+				</div>
 
-				<Fant fant={this.state.currentFant}/>
 
-				<span className="Btn" onClick={::this.getRandomFant}>Следующий</span>
+				<div className="FantSwitch">
+					<span className="Btn" onClick={::this.getRandomFant}>Следующий</span>
+				</div>
 			</div>
 		)
 	}
