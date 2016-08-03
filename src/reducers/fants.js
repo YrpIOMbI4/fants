@@ -14,6 +14,17 @@ function randSort() {
 	return (Math.random() > 0.5) ? true : false
 }
 
+function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+        var num = Math.floor(Math.random() * (i + 1));
+        var d = arr[num];
+        arr[num] = arr[i];
+        arr[i] = d;
+    }
+    return arr;
+}
+
+
 function typesTranscript(type) {
 	switch(type) {
 		case 'A':
@@ -96,22 +107,25 @@ export default function fants(state = initialState, action) {
 		case _types.FORM_DECK:
 			let playedCards = state.playedFants
 			let formedDeck
-			let deckFants = action.fants.fants.sort(randSort)
+			let deckFants = shuffle(action.fants.fants)
+			console.log(deckFants)
 			let balance = state.deck.filter(fant => fant.type == action.fants.type)
 			if (balance.length) {
 				formedDeck = state.deck.filter(fant => fant.type !== action.fants.type)
 			} else {
-				formedDeck = state.deck.concat(deckFants).sort(randSort)
+				formedDeck = shuffle(state.deck.concat(deckFants))
 				playedCards = state.playedFants.filter(fant => fant.type !== action.fants.type)
 			}
 			return {...state, deck: formedDeck, playedFants: playedCards}
 
 		case _types.RETURN_FANT:
-			let returnedDeck = state.deck.unshift(action.fant)
+		console.log(state.deck)
+			let returnedDeck = state.deck
+			returnedDeck.unshift(action.fant)
 			let returnedFants = state.playedFants.filter(fant => fant.id !== action.fant.id)
 			console.log('deck ' + returnedDeck)
 			console.log('fants ' + returnedFants)
-			return state
+			return {...state, deck: returnedDeck, playedFants: returnedFants}
 
 		default:
 			return state
