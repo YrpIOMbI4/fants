@@ -46,7 +46,6 @@ body {
 }
 
 .Fant {
-	user-select: none;
 	box-sizing: border-box;
 	position: absolute;
 	width: 100%;
@@ -66,6 +65,7 @@ body {
 }
 
 .TypeSwitch{
+	user-select: none;
 	background: rgba(0,0,0,.3);
 	position: relative;
 	padding: 20px;
@@ -151,6 +151,7 @@ body {
 } 
 
 .CompletedFants {
+	user-select: none;
 	background: rgba(0,0,0,.3);
 	position: relative;
 	margin-bottom: -110px;
