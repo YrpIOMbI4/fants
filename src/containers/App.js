@@ -4,15 +4,15 @@ import { connect } from 'react-redux'
 import * as FantsActions from '../actions/FantsActions'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-
 import Fant from '../components/Fant'
+import TypeSwitch from '../components/TypeSwitch'
 
 class App extends Component {
 
 	constructor(props, context) {
 		super(props, context)
 		this.state = {
-			currentFant: {}
+			currentFant: 0
 		}
 	}
 
@@ -20,76 +20,58 @@ class App extends Component {
 		this.props.fantsActions.getFants()
 	}
 
-	filterFants(arr, types) {
-		return arr.filter(item => 
-			types.indexOf(item.type) != -1
-		)
+	handlePlay() {
+		this.props.fantsActions.playFant(this.props.fants.deck[0])
 	}
 
-	getRandomId(arr) {
-		const max = arr.length
-		return Math.floor(Math.random() * (max));
-	}
-
-	getRandomFant() {
-		let arr = this.filterFants(this.props.fants.fantsList, this.props.fants.currentType)
-		console.log('random pressed')
-		const currentFant = this.getRandomId(arr)
-		let fant = {}
-		if (fant = arr.length) {
-			this.setState({currentFant: arr[currentFant]})
+	setCurrentClass(types, currentFant) {
+		let curType
+		for (let i=0; i < types.length; i++) {
+			if (types[i].type == currentFant.type) {
+				curType = types[i]
+			}
 		}
-	}
-
-	handleSetType(type) {
-		this.props.fantsActions.setType(type)
-	}
-
-	typeColors(type) {
-		console.log(type)
-		switch (type) {
-			case 'green': return 'Зелёные'
-			case 'orange': return 'Оранжевые'
-			case 'yellow': return 'Жёлтые'
-			case 'red': return 'Красные'
-			default: return ''
-		}	
+		return curType.className
 	}
 
 	render() {
 		const { fants, fantsActions } = this.props
+		const currentFant = fants.deck[0]
+		const currentFantItem = fants.deck.length ? <Fant key={currentFant.id} fant={currentFant} /> : <span>Фсёё</span>
+		const currentClass = fants.deck.length ? this.setCurrentClass(fants.types, currentFant) : ''
 
-		const filteredFants = this.filterFants(fants.fantsList, fants.currentType)
-		let fant = {}
+		const typeSwitch = fants.types.length ? <TypeSwitch types={fants.types} deck={fants.deck} {...fantsActions}/> : ''
 
-		let fantItem = <Fant key={this.state.currentFant.id} fant={this.state.currentFant}/>
-
-		console.log(this.state.currentFant)
+		const doneButton = fants.deck.length ? (<span className ="Btn" onClick={::this.handlePlay}>Выполнено</span>) : ''
 
 		return (
-			<div className={`Fants Fants--${this.state.currentFant.type}`}>
-				
-				<div className="TypeSwitch">
-					{fants.types.map(type => 
-						<span
-							className={`TypeSwitch__item ${fants.currentType.indexOf(type) != -1 ? 'active' : ''}`}
-							key={Math.random()*1000}
-							onClick={() => this.handleSetType(type)}
-						>
-							{this.typeColors(type)}
-						</span>
-					)}
-				</div>
+			<div className={`Fants Fants--${currentClass}`}>
+
+					<ReactCSSTransitionGroup transitionName="TypeSwitchContainer__animation" transitionEnterTimeout={300} transitionLeaveTimeout={100}>
+						{typeSwitch}
+					</ReactCSSTransitionGroup>
+
+
 				<div className="FantContainer">
-					<ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-						{fantItem}
+					<ReactCSSTransitionGroup transitionName="FantContainer__animation" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+						{currentFantItem}
 					</ReactCSSTransitionGroup>
 				</div>
 
-
-				<div className="FantSwitch">
-					<span className="Btn" onClick={::this.getRandomFant}>Следующий</span>
+				<div className="Controls">
+					{doneButton}
+					{fants.playedFants.length ? (
+					<div className="CompletedFants">
+						<div className="CompletedFants__wrapper">
+							{fants.playedFants.map(fant => (
+								<div className={`CompletedFants__item CompletedFants__item--${this.setCurrentClass(fants.types, fant)}`} key={fant.id} onClick={() => fantsActions.returnFant(fant)}>
+									<span className="CompletedFants__itemTitle">{fant.title}</span>
+								</div>
+							))}
+						</div>
+					</div>) : ''}
 				</div>
+
 			</div>
 		)
 	}

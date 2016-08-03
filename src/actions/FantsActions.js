@@ -24,9 +24,23 @@ export function getFants() {
     }
 }
 
-export function setType(fantsType) {
+export function playFant(playedItem) {
+    return {
+        type: _types.PLAY_FANT,
+        playedItem
+    }
+}
+
+export function formDeck(fants) {
+    return {
+        type: _types.FORM_DECK,
+        fants
+    }
+}
+
+export function returnFant(fant) {
 	return {
-		type: _types.SET_TYPE,
-		fantsType
+		type: _types.RETURN_FANT,
+		fant
 	}
 }

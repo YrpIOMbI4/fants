@@ -1,0 +1,53 @@
+.FantContainer__animation {
+	&-enter {
+		opacity: 0.01;
+		visibility: hidden;
+		left: -100%;
+		&-active {
+			opacity: 1;
+			visibility: visible;
+			transition: all .5s cubic-bezier(.42,0,.08,1);
+			left: 0;	
+		}
+	}
+	&-leave {
+		opacity: 1;
+		visibility: visible;
+		left: 0;
+		&-active {
+			opacity: 0.01;
+			visibility: hidden;
+			left: 100%;
+			transition: all .3s cubic-bezier(.42,0,.08,1);	
+		}		
+	}
+}
+
+.TypeSwitchContainer__animation {
+	&-enter {
+		opacity: 0.01;
+		visibility: hidden;
+		margin-top: -100px;
+		position: relative;
+		&-active {
+			opacity: 1;
+			background: red;
+			visibility: visible;
+			transition: all .3s cubic-bezier(.42,0,.08,1);
+			margin-top: 0;	
+		}
+	}
+	&-leave {
+		opacity: 1;
+		visibility: visible;
+		margin-top: 0;
+		&-active {
+			opacity: 0.01;
+			visibility: hidden;
+			margin-top: -100px;
+			transition: all .1s cubic-bezier(.42,0,.08,1);	
+		}		
+	}
+}
+
+

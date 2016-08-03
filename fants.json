@@ -2,58 +2,63 @@
 	{
 		"title": "Раз yellow",
 		"description": "ЖелтТролололо",
-		"type": "yellow",
+		"type": "C",
 		"id": 0
 	},{
 		"title": "Два yellow",
 		"description": "прым прым прым",
-		"type": "red",
+		"type": "D",
 		"id": 1
 	},{
 		"title": "Три yellow",
 		"description": "ЖелтпПодотри",
-		"type": "yellow",
+		"type": "C",
 		"id": 2
 	},{
 		"title": "Четыре yellow",
 		"description": "Желтуукука вы выаыва",
-		"type": "yellow",
+		"type": "C",
 		"id": 3
 	},{
 		"title": "Раз",
 		"description": "Тролололо",
-		"type": "red",
+		"type": "D",
 		"id": 4
 	},{
 		"title": "Два",
 		"description": "прым прым прым",
-		"type": "red",
+		"type": "D",
 		"id": 5
 	},{
 		"title": "Три",
 		"description": "пПодотри",
-		"type": "red",
+		"type": "D",
 		"id": 6
 	},{
 		"title": "Четыре",
 		"description": "Желтуукука вы выаыва",
-		"type": "yellow",
+		"type": "D",
 		"id": 7
 	},{
 		"title": "orange1",
 		"description": "пПодотри",
-		"type": "orange",
+		"type": "B",
 		"id": 8
 	},{
 		"title": "orange2",
 		"description": "уукука вы выаыва",
-		"type": "orange",
+		"type": "B",
 		"id": 9
 	},{
 		"title": "Зелёёёёный",
 		"description": "уукука вы выаыва",
-		"type": "green",
+		"type": "A",
 		"id": 10
+	},{
+		"title": "Зелёёёёный, но оранжевый",
+		"description": "уукука вы выаыва",
+		"type": "B",
+		"id": 11
 	}
 
 ]
