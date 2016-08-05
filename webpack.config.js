@@ -30,6 +30,17 @@ const common = {
 	resolve: {
 		extensions: ['', '.js', '.jsx']
 	},
+
+	module: {
+		preLoaders: [
+			{
+				test: /\.jsx?$/,
+				loaders: ['react-hot','eslint'],
+				include: PATHS.app
+			}
+		]
+	},
+
 	module: {
 		loaders: [
 			{

@@ -6,7 +6,8 @@
   "scripts": {
     "stats": "webpack --profile --json > stats.json",
     "start": "webpack-dev-server --inline",
-    "build": "webpack"
+    "build": "webpack",
+    "test:lint": "eslint . --ext .js --ext .jsx --ignore-path .gitignore --cache"
   },
   "keywords": [],
   "author": "",
@@ -14,12 +15,16 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.10.4",
+    "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
+    "eslint": "^3.2.2",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-react": "^6.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.19.0",
     "postcss-loader": "^0.9.1",
@@ -36,6 +41,7 @@
     "axios": "^0.13.1",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.3.0",
+    "react-custom-scrollbars": "^4.0.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.5.1",
